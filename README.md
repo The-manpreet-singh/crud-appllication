@@ -2,6 +2,18 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Dependencies
+
+npm install react-router-dom
+npm install axios
+npm install redux react-redux
+
+### Redux-life-cycle
+
+Action creator-> Action -> Dispatch -> Reducers -> Store
+
+Action creator-> which is our component
+Action & Dispatch-> from our components, we actually dispatch the action, which goes to the Reducer and the Reducer has the power to update the state
 ## Available Scripts
 
 In the project directory, you can run:
