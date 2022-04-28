@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 npm install react-router-dom
 npm install axios
 npm install redux react-redux
-
+API url- https://fakestoreapi.com/
 ### Redux-life-cycle
 
 Action creator-> Action -> Dispatch -> Reducers -> Store
