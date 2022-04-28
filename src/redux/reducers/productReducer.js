@@ -12,7 +12,7 @@ const initialState = {
 
 //export const productReducer = (state, action) => {
 //or we use destructuring for action
-export const productReducer = (state, { type, payload }) => {
+export const productReducer = (state= initialState, { type, payload }) => {
   //switch (action.type) {
   switch (type) {
     case ActionTypes.SET_PRODUCTS:
