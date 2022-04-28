@@ -23,6 +23,6 @@ const Product = () => {
       </div>
     );
   });
-  return <div>{renderList}</div>;
+  return <>{renderList}</>;
 };
 export default Product;

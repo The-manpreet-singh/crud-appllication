@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "./Product";
-import "./common.css";
 import axios from "axios";
 import { setProducts } from "../redux/actions/productActions";
 
@@ -25,7 +24,7 @@ export const ProductListing = () => {
   }, []);
   console.log("Products:", products);
   return (
-    <div className="ui grid container ">
+    <div className="ui grid container">
       <Product />
     </div>
   );
