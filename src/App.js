@@ -11,11 +11,11 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={ProductListing} />
-          <Route path="/product/id" exact component={ProductDetail} />
+          <Route path="/product/:productId" component={ProductDetail} />
           <Route>404 Page Not Found</Route>
         </Switch>
       </Router>
-    </div> 
+    </div>
   );
 }
 
