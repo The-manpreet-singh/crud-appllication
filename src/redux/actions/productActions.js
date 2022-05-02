@@ -1,3 +1,4 @@
+import axios from "axios";
 import { ActionTypes } from "../constants/action-types";
 
 export const setProducts = (products) => {
@@ -16,5 +17,14 @@ export const selectedProducts = (product) => {
 export const removeSelectedProducts = () => {
   return {
     type: ActionTypes.REMOVE_SELECTED_PRODUCT,
+  };
+};
+
+export const fetchProducts = async () => {
+  const response = await axios.get("/products");
+  console.log(response);
+  return {
+    type: ActionTypes.FETCH_PRODUCTS,
+    payload: response,
   };
 };
