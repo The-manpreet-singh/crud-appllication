@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProducts,
   removeSelectedProducts,
+  fetchProduct
 } from "../redux/actions/productActions";
+import fakeStoreApi from "../apis/fakeStoreApi";
 
 export const ProductDetail = () => {
   const product = useSelector((state) => state.product); //its give the state access
@@ -15,18 +16,19 @@ export const ProductDetail = () => {
   //console.log(productId);
   console.log(product);
 
-  const fetchProductDetail = async () => {
-    const response = await axios
-      .get(`https://fakestoreapi.com/products/${productId}`)
-      .catch((err) => {
-        console.log("Error", err);
-      });
+  // const fetchProductDetail = async () => {
+  //   const response = await fakeStoreApi
+  //     .get(`https://fakestoreapi.com/products/${productId}`)
+  //     .catch((err) => {
+  //       console.log("Error", err);
+  //     });
 
-    dispatch(selectedProducts(response.data));
-  };
+  //   dispatch(selectedProducts(response.data));
+  // };
+
   useEffect(() => {
     if (productId && productId !== "") {
-      fetchProductDetail();
+      dispatch(fetchProduct(productId));
     }
     return () => {
       dispatch(removeSelectedProducts());

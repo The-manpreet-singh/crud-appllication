@@ -31,3 +31,9 @@ export const fetchProducts = () => async (dispatch) => {
 //   type: ActionTypes.FETCH_PRODUCTS,
 //   payload: response,
 // };
+
+export const fetchProduct = (id) => async (dispatch) => {
+  const response = await fakeStoreApi.get(`/products/${id}`);
+  console.log(response);
+  dispatch({ type: ActionTypes.SELECTED_PRODUCT, payload: response.data });
+};
