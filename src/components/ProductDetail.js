@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectedProducts,
   removeSelectedProducts,
-  fetchProduct
+  fetchProduct,
 } from "../redux/actions/productActions";
 import fakeStoreApi from "../apis/fakeStoreApi";
 
@@ -15,16 +15,6 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
   //console.log(productId);
   console.log(product);
-
-  // const fetchProductDetail = async () => {
-  //   const response = await fakeStoreApi
-  //     .get(`https://fakestoreapi.com/products/${productId}`)
-  //     .catch((err) => {
-  //       console.log("Error", err);
-  //     });
-
-  //   dispatch(selectedProducts(response.data));
-  // };
 
   useEffect(() => {
     if (productId && productId !== "") {

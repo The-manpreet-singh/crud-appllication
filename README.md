@@ -7,13 +7,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 npm install react-router-dom
 npm install axios
 npm install redux react-redux
+npm install redux-thunk
 API url- https://fakestoreapi.com/
+
 ### Redux-life-cycle
 
 Action creator-> Action -> Dispatch -> Reducers -> Store
 
 Action creator-> which is our component
 Action & Dispatch-> from our components, we actually dispatch the action, which goes to the Reducer and the Reducer has the power to update the state
+
+### Redux-thunk-middleware-life-cycle
+
+Action creator-> Action -> Dispatch ->middleware-> Reducers -> Store
+
+Action creator-> which is our component
+Action & Dispatch-> from our components, we actually dispatch the action, which goes to middleware and then its pass the action to the Reducer and the Reducer has the power to update the state
+
 ## Available Scripts
 
 In the project directory, you can run:
