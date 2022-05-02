@@ -1,4 +1,4 @@
-import axios from "axios";
+import fakeStoreApi from "../../apis/fakeStoreApi";
 import { ActionTypes } from "../constants/action-types";
 
 export const setProducts = (products) => {
@@ -20,11 +20,14 @@ export const removeSelectedProducts = () => {
   };
 };
 
-export const fetchProducts = async () => {
-  const response = await axios.get("/products");
+//create sychronus action create  into asychronus action creator using the redux middleware thunk
+export const fetchProducts = () => async (dispatch) => {
+  const response = await fakeStoreApi.get("/products");
   console.log(response);
-  return {
-    type: ActionTypes.FETCH_PRODUCTS,
-    payload: response,
-  };
+  dispatch({ type: ActionTypes.FETCH_PRODUCTS, payload: response.data });
 };
+
+// return {
+//   type: ActionTypes.FETCH_PRODUCTS,
+//   payload: response,
+// };
