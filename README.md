@@ -9,6 +9,8 @@ npm install axios
 npm install redux react-redux
 npm install redux-thunk
 API url- https://fakestoreapi.com/
+npm install install bootstrap
+npm install font-awesome
 
 ### Redux-life-cycle
 
