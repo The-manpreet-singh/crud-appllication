@@ -4,6 +4,11 @@
   margin: 0;
 }
 
+/* NavBar */
+.navbar-nav a {
+  font-size: 16px;
+}
+
 .ui.cards > .card > .image {
   height: 250px;
   padding: 20px;
