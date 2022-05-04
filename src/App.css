@@ -8,6 +8,9 @@
 .navbar-nav a {
   font-size: 16px;
 }
+.hero .card .card-img-overlay .container {
+  color: rgba(11, 13, 14, 0.987);
+}
 
 .ui.cards > .card > .image {
   height: 250px;
