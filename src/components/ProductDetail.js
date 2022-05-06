@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -7,53 +7,69 @@ import {
   fetchProduct,
 } from "../redux/actions/productActions";
 import fakeStoreApi from "../apis/fakeStoreApi";
+import Skeleton from "react-loading-skeleton";
+import { NavLink } from "react-router-dom";
 
 export const ProductDetail = () => {
+  
   const product = useSelector((state) => state.product); //its give the state access
-  const { image, title, price, category, description } = product;
+  const { image, title, rating, price, category, description } = product;
   const { productId } = useParams();
   const dispatch = useDispatch();
   //console.log(productId);
   console.log(product);
 
   useEffect(() => {
+    setLoading(true);
     if (productId && productId !== "") {
       dispatch(fetchProduct(productId));
+      setLoading(false);
     }
     return () => {
       dispatch(removeSelectedProducts());
     };
   }, [productId]);
-  return (
-    <div className="ui grid container">
-      {Object.keys(product).length === 0 ? (
-        <div>...Loading</div>
-      ) : (
-        <div className="ui placeholder segment">
-          <div className="ui two column stackable center aligned grid">
-            <div className="ui vertical divider">AND</div>
-            <div className="middle aligned row">
-              <div className="column lp">
-                <img className="ui fluid image" src={image} />
-              </div>
-              <div className="column rp">
-                <h1>{title}</h1>
-                <h2>
-                  <a className="ui teal tag label">${price}</a>
-                </h2>
-                <h3 className="ui brown block header">{category}</h3>
-                <p>{description}</p>
-                <div className="ui vertical animated button" tabIndex="0">
-                  <div className="hidden content">
-                    <i className="shop icon"></i>
-                  </div>
-                  <div className="visible content">Add to Cart</div>
-                </div>
-              </div>
+
+  
+  const ShowProducts = () => {
+    return (
+      <>
+        {Object.keys(product).length === 0 ? (
+          <div>...Loading</div>
+        ) : (
+          <>
+            <div className="col-md-6">
+              <img height="400px" width="400px" src={image} alt={title} />
             </div>
-          </div>
+            <div className="col-md-6">
+              <h4 className="text-uppercase text-black-50">{category}</h4>
+              <h1 className="display-5">{title}</h1>
+              <p className="lead fw-bolder">
+                Rating {rating && rating.rate}
+                <i className="fa fa-star"></i>
+              </p>
+              <h3 className="display-6 fw-bold my-4">$ {price}</h3>
+              <p className="lead">{description}</p>
+              <button className="btn btn-outline-dark px-4 py-2">
+                Add to Cart
+              </button>
+              <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
+                Go to Cart
+              </NavLink>
+            </div>
+          </>
+        )}
+      </>
+    );
+  };
+
+  return (
+    <div>
+      <div className="container py-5">
+        <div className="row py-4">
+          <ShowProducts />
         </div>
-      )}
+      </div>
     </div>
   );
 };
