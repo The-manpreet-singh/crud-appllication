@@ -11,7 +11,6 @@ import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 
 export const ProductDetail = () => {
-  
   const product = useSelector((state) => state.product); //its give the state access
   const { image, title, rating, price, category, description } = product;
   const { productId } = useParams();
@@ -20,17 +19,14 @@ export const ProductDetail = () => {
   console.log(product);
 
   useEffect(() => {
-    setLoading(true);
     if (productId && productId !== "") {
       dispatch(fetchProduct(productId));
-      setLoading(false);
     }
     return () => {
       dispatch(removeSelectedProducts());
     };
   }, [productId]);
 
-  
   const ShowProducts = () => {
     return (
       <>

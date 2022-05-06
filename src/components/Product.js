@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import axios from "axios";
 import fakeStoreApi from "../apis/fakeStoreApi";
@@ -35,21 +35,23 @@ const Product = () => {
   const renderList = filterList.map((product) => {
     const { id, title, image, price, category } = product; //destructuing t
     return (
-      <div className="four wide column" key={id}>
-        <Link to={`/product/${id}`}>
-          <div className="ui link cards">
-            <div className="card">
-              <div className="image">
-                <img src={image} alt={title} />
-              </div>
-              <div className="content">
-                <div className="header">{title}</div>
-                <div className="meta price">$ {price}</div>
-                <div className="meta">{category}</div>
-              </div>
-            </div>
+      <div className="col-md-3 mb-4" key={id}>
+        <div key={id} className="card h-100 text-center p-4">
+          <img
+            src={image}
+            alt={title}
+            className="card-img-top"
+            height="250px"
+          />
+
+          <div className="card-body">
+            <h5 className="card-title mb-0">{title.substring(0, 12)}...</h5>
+            <p className="card-text lead fw-bold">$ {price}</p>
+            <NavLink to={`/product/${id}`} className="btn btn-outline-dark">
+              Buy Now
+            </NavLink>
           </div>
-        </Link>
+        </div>
       </div>
     );
   });
@@ -122,7 +124,9 @@ const Product = () => {
         <div className="container my-5 py-5">
           <div className="row">
             <div className="col-12 mb-5">
-              <h1 className="display-6 fw-bolder text-center">Latest Products</h1>
+              <h1 className="display-6 fw-bolder text-center">
+                Latest Products
+              </h1>
               <hr />
             </div>
           </div>
