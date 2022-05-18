@@ -9,6 +9,7 @@ import {
 import fakeStoreApi from "../apis/fakeStoreApi";
 import Skeleton from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
+import { addCart } from "../redux/actions";
 
 export const ProductDetail = () => {
   const product = useSelector((state) => state.product); //its give the state access
@@ -17,6 +18,9 @@ export const ProductDetail = () => {
   const dispatch = useDispatch();
   //console.log(productId);
   console.log(product);
+  const addProduct = (product) => {
+    dispatch(addCart(product));
+  };
 
   useEffect(() => {
     if (productId && productId !== "") {
@@ -46,7 +50,10 @@ export const ProductDetail = () => {
               </p>
               <h3 className="display-6 fw-bold my-4">$ {price}</h3>
               <p className="lead">{description}</p>
-              <button className="btn btn-outline-dark px-4 py-2">
+              <button
+                className="btn btn-outline-dark px-4 py-2"
+                onClick={() => addProduct(product)}
+              >
                 Add to Cart
               </button>
               <NavLink to="/cart" className="btn btn-dark ms-2 px-3 py-2">
