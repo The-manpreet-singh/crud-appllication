@@ -5,7 +5,7 @@ import NavBar from "./components/Navbar";
 import { ProductListing } from "./components/ProductListing";
 import { ProductDetail } from "./components/ProductDetail";
 import Product from "./components/Product";
-import { Cart } from "./components/Cart";
+import Cart from "./components/Cart";
 function App() {
   return (
     <div className="App">
